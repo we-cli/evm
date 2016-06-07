@@ -1,0 +1,27 @@
+{
+  "name": "evm",
+  "description": "Electron Version Manager",
+  "version": "0.0.1",
+  "homepage": "https://github.com/fritx/evm",
+  "repository": "fritx/evm",
+  "license": "MIT",
+  "keywords": [
+    "evm",
+    "electron",
+    "atom-shell",
+    "atom",
+    "version",
+    "manager",
+    "switcher",
+    "binary",
+    "env"
+  ],
+  "bin": {
+    "evm": "cli.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "electron-download": "^2.1.2",
+    "extract-zip": "^1.5.0"
+  }
+}
