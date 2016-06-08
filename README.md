@@ -1,4 +1,4 @@
-# evm
+# evm <a href="https://github.com/sindresorhus/awesome-electron"><img width="116" height="20" src="https://img.shields.io/badge/awesome-electron-ff69b4.svg"></a> <a href="https://github.com/fritx/evm"><img width="78" height="20" src="https://img.shields.io/badge/github-MIT-blue.svg"></a>
 
 > Electron Version Manager
 
