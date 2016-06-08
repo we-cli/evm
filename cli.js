@@ -5,7 +5,9 @@ var evm = require('./')
 switch (args[0]) {
   case 'install':
   case 'use':
-    evm[args[0]]({ version: args[1] }, function (err) {
+    evm[args[0]]({
+      version: args[1], platform: args[2], arch: args[3]
+    }, function (err) {
       // if (err) throw err
       if (err) console.error(err)
     })
