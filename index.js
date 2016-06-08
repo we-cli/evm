@@ -11,6 +11,7 @@ var extname = require('path').extname
 var dirname = require('path').dirname
 var join = require('path').join
 var fs = require('fs')
+var os = require('os')
 
 exports.install = install
 exports.use = use
@@ -41,7 +42,7 @@ function use (opts, cb) {
     win32: 'electron.exe'
   }[opts.platform]
   var dir = ['electron', 'v' + opts.version, opts.platform, opts.arch].join('-')
-  var dist = join(process.env.HOME, '.electron', dir, bin)
+  var dist = join(os.homedir(), '.electron', dir, bin)
 
   fs.exists(dist, function (exists) {
     if (!exists) {

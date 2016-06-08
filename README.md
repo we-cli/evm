@@ -3,7 +3,7 @@
 > Electron Version Manager
 
 - [x] unix support
-- [ ] windows support (experimental)
+- [x] windows support (experimental)
 - [x] evm install
 - [x] evm use
 - [ ] evm ls
