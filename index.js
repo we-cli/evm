@@ -3,9 +3,9 @@
 // inspired by prt
 
 // todo: use promise
-// todo: evm ls
 var download = require('electron-download')
 var extract = require('extract-zip')
+var exec = require('child_process').exec
 var basename = require('path').basename
 var extname = require('path').extname
 var dirname = require('path').dirname
@@ -15,6 +15,33 @@ var os = require('os')
 
 exports.install = install
 exports.use = use
+exports.list = list
+exports.curr = curr
+
+function curr(cb) {
+  exec('electron -v', function (err, stdout) {
+    if (!err) {
+      stdout = ' ' + stdout + ' '
+      var mat = stdout.match(/\s+(v\d+(\.\d)+)\s+/)
+      if (mat) return cb(null, mat[1])
+    }
+    cb(new Error('no electron in use'))
+  })
+}
+
+function list (cb) {
+  fs.readdir(join(os.homedir(), '.electron'), function (err, keys) {
+    if (err) return cb(err)
+    var items = keys.reduce(function (acc, key) {
+      if (key.indexOf('.zip') < 0) {
+        var mat = key.match(/^electron\-(.+?)\-(.+?)\-(.+?)$/)
+        if (mat) acc.push(mat.slice(1, 4))
+      }
+      return acc
+    }, [])
+    cb(null, items)
+  })
+}
 
 function install (opts, cb) {
   opts.platform = opts.platform || process.platform

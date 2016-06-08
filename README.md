@@ -6,7 +6,7 @@
 - [x] windows support (experimental)
 - [x] evm install
 - [x] evm use
-- [ ] evm ls
+- [x] evm ls
 
 ```plain
 npm install -g evm
@@ -17,6 +17,7 @@ evm install 0.33.6
 evm install 1.2.1
 evm use 1.2.1
 evm use 0.33.6
+evm ls
 ```
 
 ```plain
@@ -31,6 +32,12 @@ evm install 0.33.6 win32 ia32
 evm install 1.2.1 darwin x64
 evm use 1.2.1 linux ""
 evm use 1.2.1 "" x64
+
+evm ls
+>
+    v0.33.6 - win32 - ia32
+  * v1.2.1 - linux - x64
+    v1.2.1 - darwin - x64
 ```
 
 See also: [electron-download](https://github.com/electron-userland/electron-download), [electron-prebuilt](https://npmjs.org/electron-prebuilt), [nwjs](https://github.com/egoist/nwjs), [prt](https://github.com/fritx/prt)
