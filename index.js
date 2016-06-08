@@ -7,7 +7,7 @@ var download = require('electron-download')
 var extract = require('extract-zip')
 var exec = require('child_process').exec
 var basename = require('path').basename
-var extname = require('path').extname
+// var extname = require('path').extname
 var dirname = require('path').dirname
 var join = require('path').join
 var fs = require('fs')
@@ -73,18 +73,18 @@ function use (opts, cb) {
 
   fs.exists(dist, function (exists) {
     if (!exists) {
-      console.warn('v' + opts.version + ' is not installed')
-      return cb()
+      // console.warn('v' + opts.version + ' is not installed')
+      return cb(new Error('v' + opts.version + ' not installed'))
     }
-    crosslink(dist, cb)
+    crosslink(dist, 'electron', cb)
   })
 }
 
-function crosslink (file, cb) {
+function crosslink (file, base, cb) {
   if (process.platform === 'win32') {
     winlink(file, cb)
   } else {
-    var target = '/usr/local/bin/electron'
+    var target = '/usr/local/bin/' + base
     fs.unlink(target, function () {
       fs.symlink(file, target, cb)
     })
@@ -92,9 +92,9 @@ function crosslink (file, cb) {
 }
 
 // experimental: windows support
-function winlink (file, cb) {
-  var ext = extname(file)
-  var base = basename(file, ext)
+function winlink (file, base, cb) {
+  // var ext = extname(file)
+  // var base = basename(file, ext)
   var cmdfile = join(process.env.windir, base + '.cmd')
   var cmd = '"' + file + '" %*'
   fs.writeFile(cmdfile, cmd, cb)
