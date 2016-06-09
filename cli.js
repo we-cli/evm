@@ -18,7 +18,8 @@ switch (args[0]) {
       evm.list(function (err, items) {
         if (err) console.error('  ' + String(err))
         var output = items.reduce(function (acc, item) {
-          return acc + (curr ? '  * ' : '    ') + item.join(' - ')
+          return acc + (curr === item[0] ? '  * ' : '    ')
+            + item.join(' - ') + '\n'
         }, '')
         console.log(output)
       })
