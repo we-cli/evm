@@ -4,23 +4,28 @@
 
 - [x] unix support
 - [x] windows support (experimental)
+- [x] shares ~/.electron w/ electron-prebuilt, etc
 - [x] evm install
 - [x] evm use
 - [x] evm ls
 
-```plain
+```shell
 npm install -g evm
 ```
 
-```plain
+```shell
 evm install 0.33.6
 evm install 1.2.1
 evm use 1.2.1
 evm use 0.33.6
 evm ls
+
+# equivalent to
+npm i -g electron-prebuilt@0.33.6
+npm i -g electron-prebuilt@1.2.1
 ```
 
-```plain
+```shell
 # set a mirror (china)
 ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
 
