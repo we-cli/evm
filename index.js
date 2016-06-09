@@ -22,7 +22,7 @@ function curr(cb) {
   exec('electron -v', function (err, stdout) {
     if (!err) {
       stdout = ' ' + stdout + ' '
-      var mat = stdout.match(/\s+(v\d+(\.\d)+)\s+/)
+      var mat = stdout.match(/\s+(v\d+(\.\d+)+)\s+/)
       if (mat) return cb(null, mat[1])
     }
     cb(new Error('no electron in use'))
